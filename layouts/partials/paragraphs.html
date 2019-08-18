@@ -1,0 +1,10 @@
+{{ $feed := getJSON "http://hugoshop.local/Default.aspx?ID=3" }}
+{{ range $feed.Paragraphs }}
+    {{ if eq .Type "Image" }}
+        {{ partial "Paragraphs/image.html" . }}
+    {{ else if eq .Type "Text" }}
+        <h1>Text</h1>
+    {{ else }}
+        <h1>Other ({{ .Type }})</h1>
+    {{ end }}
+{{ end }}
