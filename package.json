@@ -1,0 +1,23 @@
+{
+  "name": "hugoshop",
+  "version": "1.0.0",
+  "description": "Introduction is a waste...",
+  "main": "index.js",
+  "dependencies": {
+    "foundation-sites": "^6.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moemar/hugoshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moemar/hugoshop/issues"
+  },
+  "homepage": "https://github.com/moemar/hugoshop#readme"
+}
