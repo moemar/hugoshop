@@ -1,7 +1,7 @@
 # HugoShop
 Introduction is a waste...
 
-#Install
+## Install
 Find a suitable location on your file system, and clone the repository like this.
 
-`git clone `
+`git clone https://github.com/moemar/hugoshop.git`
