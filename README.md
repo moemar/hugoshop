@@ -41,6 +41,7 @@ Run the solution.
 ```
 hugo server -D
 ```
+If everything is working as expected, the site will be available on `http://localhost:1313/`
 
 ## Edit
 Open the project in Visual Studio Code, if you dont have it, install it, period. Then run the following command.
