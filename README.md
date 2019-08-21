@@ -48,3 +48,17 @@ Open the project in Visual Studio Code, if you dont have it, install it, period.
 ```
 code .
 ```
+
+## Changes
+Whenever you work with the project, remember to check inn and pull changes.
+
+### Pull
+```
+git pull
+```
+
+### Commit
+```
+git add .
+git commit -m "Write a message"
+git push origin
