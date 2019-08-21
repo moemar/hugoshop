@@ -11,6 +11,7 @@ Verify that it is installed, by running the command `choco` in PowerShell. It sh
 Second, install Hugo.
 ```
 choco install hugo -confirm
+choco install hugo-extended
 ```
 Verify the installation by running the command `hugo version` in PowerShell. It should display the version installed.
 
