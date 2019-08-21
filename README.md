@@ -41,3 +41,9 @@ Run the solution.
 ```
 hugo server -D
 ```
+
+## Edit
+Open the project in Visual Studio Code, if you dont have it, install it, period. Then run the following command.
+```
+code .
+```
