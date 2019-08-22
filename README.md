@@ -25,7 +25,7 @@ Fourth and last, install NodeJs and NPM.
 ```
 choco install nodejs.install
 ```
-Verify the installation by running the command `node -v` and `npm -v` in PowerShell.
+Verify the installation by running the command `node -v` and `npm -v` in PowerShell. You might have to close and reopen PowerShell before it is working.
 
 ## Install
 Find a suitable location on your file system, and clone the repository like this. 
