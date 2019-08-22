@@ -1,18 +1,18 @@
 {{ $imageTitle := "" }}
 {{ $imageUrl := "" }}
-{{ $paragraphClass := printf "%s-paragraph" .Type | lower }}
+{{ $paragraphClass := printf "%s-paragraph" .type | lower }}
 
-{{ range .Fields }}
-    {{ if eq .Name "Title" }}
-        {{ $imageTitle = .Value }}
-    {{ else if eq .Name "Image" }}
-        {{ $imageUrl = printf "http://hugoshop.local%s" .Value }}
+{{ range .fields }}
+    {{ if eq .name "title" }}
+        {{ $imageTitle = .value }}
+    {{ else if eq .name "image" }}
+        {{ $imageUrl = .value }}
     {{ end }}
 {{ end}}
 
 {{ if (and (ne $imageTitle "") (ne $imageUrl "")) }}
     <section class="{{ $paragraphClass }} grid-container full">
-        <img title="{{ $imageTitle }}" src="{{ $imageUrl }}">
+        <img style="width: 100%;" title="{{ $imageTitle }}" src="{{ $imageUrl }}">
     </section>
 {{ else }}
     {{ printf "<!-- Image paragraph with id %.0f is not rendered due to missing field values: Title and Image -->" .Id | safeHTML }}

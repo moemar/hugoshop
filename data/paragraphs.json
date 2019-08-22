@@ -1,0 +1,16 @@
+[
+    {
+      "id": "P2",
+      "type": "Image",
+      "fields": [
+        {
+          "name": "title",
+          "value": "Image 2 title"
+        },
+        {
+          "name": "image",
+          "value": "http://s3-ap-south-1.amazonaws.com/startupuploads/wp-content/uploads/2017/03/07211425/mountains_ridge-1920x540.jpeg"
+        }
+      ]
+    }
+]
