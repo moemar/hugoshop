@@ -1,12 +1,12 @@
 {{ $imageTitle := "" }}
 {{ $imageUrl := "" }}
-{{ $paragraphClass := printf "%s-paragraph" .type | lower }}
+{{ $paragraphClass := printf "%s-paragraph" .image.Type | lower }}
 
-{{ range .fields }}
-    {{ if eq .name "title" }}
-        {{ $imageTitle = .value }}
-    {{ else if eq .name "image" }}
-        {{ $imageUrl = .value }}
+{{ range .image.Fields }}
+    {{ if eq .Name "Title" }}
+        {{ $imageTitle = .Value }}
+    {{ else if eq .Name "Image" }}
+        {{ $imageUrl = printf "%s%s" $.ctx.Site.Params.dwURL .Value }}
     {{ end }}
 {{ end}}
 
@@ -15,5 +15,5 @@
         <img style="width: 100%;" title="{{ $imageTitle }}" src="{{ $imageUrl }}">
     </section>
 {{ else }}
-    {{ printf "<!-- Image paragraph with id %.0f is not rendered due to missing field values: Title and Image -->" .Id | safeHTML }}
+    {{ printf "<!-- Image paragraph with id %.0f is not rendered due to missing field values: Title and Image -->" .image.Id | safeHTML }}
 {{ end}}

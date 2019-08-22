@@ -1,3 +1,6 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Hugo Shop"
+
+[params]
+    dwURL = "https://egwbp-magmo.azurewebsites.net"

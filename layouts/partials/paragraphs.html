@@ -1,9 +1,10 @@
-{{ range .Site.Data.paragraphs }}
-    {{ if eq .type "Image" }}
-        {{ partial "Paragraphs/image.html" . }}
-    {{ else if eq .type "Text" }}
+{{ $feed := getJSON (printf "%s/api/getallparagraphsbypageid" $.Site.Params.dwURL) }}
+{{ range $feed }}
+    {{ if eq .Type "Image" }}
+        {{ partial "Paragraphs/image.html" (dict "image" . "ctx" $) }}
+    {{ else if eq .Type "Text" }}
         <h1>Text</h1>
     {{ else }}
-        <h1>Other ({{ .type }})</h1>
+        <h1>Other ({{ .Type }})</h1>
     {{ end }}
 {{ end }}
