@@ -21,6 +21,12 @@ choco install golang
 ```
 Verify the installation by running the command `go version` in PowerShell. It should display the version installed. Sometimes you might have to close and reopen the PowerShell in order for it to work.
 
+Fourth and last, install NodeJs and NPM.
+```
+choco install nodejs.install
+```
+Verify the installation by running the command `node -v` and `npm -v` in PowerShell.
+
 ## Install
 Find a suitable location on your file system, and clone the repository like this. 
 ```
