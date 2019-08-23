@@ -1,0 +1,17 @@
+{{ $headerText := "" }}
+{{ $headerLevel := "" }}
+{{ $paragraphClass := printf "%s-paragraph" .image.Type | lower }}
+
+{{ range .header.Fields }}
+    {{ if eq .Name "HeaderText" }}
+        {{ $headerText = .Value }}
+    {{ else if eq .Name "HeaderLevel" }}
+        {{ $headerLevel = .Value }}
+    {{ end }}
+{{ end}}
+
+{{ if (and (ne $headerText "") (ne $headerLevel "")) }}
+    {{ printf "<%s>%s</%s>" $headerLevel $headerText $headerLevel | safeHTML }}
+{{ else }}
+    {{ printf "<!-- Header paragraph with id %.0f is not rendered due to missing field values: Title and Level -->" .header.Id | safeHTML }}
+{{ end}}

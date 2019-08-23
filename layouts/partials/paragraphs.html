@@ -2,9 +2,11 @@
 {{ range $feed }}
     {{ if eq .Type "Image" }}
         {{ partial "Paragraphs/image.html" (dict "image" . "ctx" $) }}
-    {{ else if eq .Type "Text" }}
-        <h1>Text</h1>
+    {{ else if eq .Type "Header" }}
+        {{ partial "Paragraphs/header.html" (dict "header" . "ctx" $) }}
+    {{ else if eq .Type "Paragraph" }}
+        {{ partial "Paragraphs/paragraph.html" (dict "paragraph" . "ctx" $) }}
     {{ else }}
-        <h1>Other ({{ .Type }})</h1>
+        {{ printf "<!-- Unknown item type: %s -->" .Type | safeHTML }}
     {{ end }}
 {{ end }}

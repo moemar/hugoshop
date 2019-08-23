@@ -1,0 +1,25 @@
+{{ $headerText := "" }}
+{{ $headerLevel := "" }}
+{{ $paragraphIngress := "" }}
+{{ $paragraphContent := "" }}
+{{ $paragraphClass := printf "%s-paragraph" .image.Type | lower }}
+
+{{ range .paragraph.Fields }}
+    {{ if eq .Name "HeaderText" }}
+        {{ $headerText = .Value }}
+    {{ else if eq .Name "HeaderLevel" }}
+        {{ $headerLevel = .Value }}
+    {{ else if eq .Name "ParagraphIngress" }}
+        {{ $paragraphIngress = .Value }}
+    {{ else if eq .Name "ParagraphContent" }}
+        {{ $paragraphContent = .Value }}
+    {{ end }}
+{{ end}}
+
+{{ if (and (ne $headerText "") (ne $headerLevel "")) }}
+    {{ printf "<%s>%s</%s>" $headerLevel $headerText $headerLevel | safeHTML }}
+    <p>{{ $paragraphIngress }}</p>
+    <div>{{ $paragraphContent | safeHTML }}</div>
+{{ else }}
+    {{ printf "<!-- Paragraph with id %.0f is not rendered due to missing field values: Title and Level -->" .paragraph.Id | safeHTML }}
+{{ end}}
