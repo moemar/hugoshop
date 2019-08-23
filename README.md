@@ -46,7 +46,7 @@ npm install
 ## Run
 Run the solution.
 ```
-hugo servr -D
+hugo serve -D
 hugo serve -D --ignoreCache
 ```
 If everything is working as expected, the site will be available on `http://localhost:1313/`
