@@ -1,19 +1,22 @@
 {{ $imageTitle := "" }}
 {{ $imageUrl := "" }}
+{{ $imageAlternativeText := "" }}
 {{ $paragraphClass := printf "%s-paragraph" .image.Type | lower }}
 
 {{ range .image.Fields }}
     {{ if eq .Name "Title" }}
         {{ $imageTitle = .Value }}
     {{ else if eq .Name "Image" }}
-        {{ $imageUrl = printf "%s%s" $.ctx.Site.Params.dwURL .Value }}
+        {{ $imageUrl = .Value }}
+    {{ else if eq .Name "AlternativeText" }}
+        {{ $imageAlternativeText = .Value }}
     {{ end }}
 {{ end}}
 
 {{ if (and (ne $imageTitle "") (ne $imageUrl "")) }}
     <section class="{{ $paragraphClass }} grid-container full">
-        <img style="width: 100%;" title="{{ $imageTitle }}" src="{{ $imageUrl }}">
+        <img style="width: 100%;" title="{{ $imageAlternativeText }}" src="{{ $imageUrl }}" alt="{{ $imageAlternativeText }}">
     </section>
 {{ else }}
-    {{ printf "<!-- Image paragraph with id %.0f is not rendered due to missing field values: Title and Image -->" .image.Id | safeHTML }}
+    {{ printf "<!-- Image with id %.0f is not rendered due to missing field values: Title and Image -->" .image.Id | safeHTML }}
 {{ end}}
