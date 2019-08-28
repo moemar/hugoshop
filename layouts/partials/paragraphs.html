@@ -1,12 +1,18 @@
-{{ $feed := getJSON (printf "%s/api/getallparagraphsbypageid" $.Site.Params.dwURL) }}
-{{ range $feed }}
-    {{ if eq .Type "Image" }}
-        {{ partial "Paragraphs/image.html" (dict "image" . "ctx" $) }}
-    {{ else if eq .Type "Header" }}
-        {{ partial "Paragraphs/header.html" (dict "header" . "ctx" $) }}
-    {{ else if eq .Type "Paragraph" }}
-        {{ partial "Paragraphs/paragraph.html" (dict "paragraph" . "ctx" $) }}
+{{ if and (isset .Params "id") (ne .Params.id 0) }}
+    {{ $feed := getJSON (printf "%s/api/getallparagraphsbypageid?pageid=%.f" $.Site.Params.dwURL .Params.id) }}
+    {{ if (eq ($feed | len) 0) }}
+        {{ printf "<!-- No paragraphs on this page -->" | safeHTML }}
     {{ else }}
-        {{ printf "<!-- Unknown item type: %s -->" .Type | safeHTML }}
+        {{ range $feed }}
+            {{ if eq .Type "Image" }}
+                {{ partial "Paragraphs/image.html" (dict "image" . "ctx" $) }}
+            {{ else if eq .Type "Header" }}
+                {{ partial "Paragraphs/header.html" (dict "header" . "ctx" $) }}
+            {{ else if eq .Type "Paragraph" }}
+                {{ partial "Paragraphs/paragraph.html" (dict "paragraph" . "ctx" $) }}
+            {{ else }}
+                {{ printf "<!-- Unknown item type: %s -->" .Type | safeHTML }}
+            {{ end }}
+        {{ end }}
     {{ end }}
 {{ end }}
